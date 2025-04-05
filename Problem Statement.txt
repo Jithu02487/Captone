@@ -1,0 +1,64 @@
+Problem Statement 6:
+--------------------
+Scenario: The shift to remote work has brought about significant challenges in team coordination and task management. Teams distributed across various time zones often struggle with asynchronous communication, leading to delays in project timelines and misunderstandings about task responsibilities. Additionally, the lack of face-to-face interaction can result in a disconnect between team members, making it harder to maintain accountability and ensure that everyone is on the same page. Traditional task management tools may not provide the level of flexibility needed to accommodate different work styles and time zones, leaving gaps in communication and collaboration."
+--------------------------------------------------
+
+Core Problem Areas Solved
+-------------------------
+
+1 - Time-zone misalignment
+
+2 - Asynchronous communication delays
+
+3 - Lack of task clarity & ownership
+
+4 - Low accountability & engagement
+
+5 - Inflexible task tools for remote teams
+
+Key Features
+-------------------------
+1 - Time-Zone Intelligence Layer
+
+	* Automatically detects each user’s working hours.
+	* Visualizes team schedule overlaps on a timeline heatmap.
+	* Schedules meetings and deadlines intelligently based on availability.
+	* Sends alerts only during appropriate time windows (smart notifications).
+2 - Async Daily Stand-ups
+
+	* Team members record short updates (text or video/audio)
+	* All updates are compiled into a daily digest (readable or watchable)
+	* AI-generated summary for team leads: key blockers, progress trends, team sentiment.
+3 - Smart Task Manager
+
+	* Create tasks with:
+		- Owner
+		- Deadlines adjusted for their local time
+		- Subtasks auto-generated using AI (based on project description)
+	* Visual board (Kanban or Timeline) tailored to team working hours
+	* Progress tracking with automatic nudges if tasks fall behind
+4 - Async Collaboration Rooms
+	* Topic-based rooms (e.g., “Sprint Planning” or “Design Feedback”)
+	* Drop quick updates, video replies, or share documents
+	* Replaces live meetings with structured async discussions
+	* Threads remain organized & searchable
+5 - Accountability & Wellness Dashboard
+	* Visual daily/weekly progress
+	* Pulse check: "How are you feeling today?" — track morale over time
+	* Leaderboard (optional) for celebrating task completion & collaboration
+6 - Integrations Hub
+	* Google Calendar, Slack, Zoom
+	* GitHub, Notion, Jira, Trello
+	* AI Copilot for summarizing long threads or identifying bottlenecks
+7 - User Roles
+	* Team Member: Manage tasks, submit stand-ups, collaborate async
+	* Team Lead: Review summaries, assign tasks, monitor pulse & productivity
+	* Admin: Customize workflows, manage integrations & privacy
+
+8 - Tech Stack Suggestions
+	* Frontend: React + TailwindCSS
+	* Backend: Node.js / Express + PostgreSQL
+	* Real-time / Async: WebSockets + Scheduled Jobs (Node Cron or Temporal)
+	* AI Layer: OpenAI API or Hugging Face (for summaries, task enhancement)
+	* Auth: OAuth + Role-based Access
+	* Hosting: Vercel / Netlify (frontend) + AWS / Railway (backend)
