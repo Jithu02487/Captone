@@ -28,7 +28,7 @@ Key Features
 
 	* Team members record short updates (text or video/audio)
 	* All updates are compiled into a daily digest (readable or watchable)
-	* AI-generated summary for team leads: key blockers, progress trends, team sentiment.
+	* AI-generated summary for team leads: key blockers, progress trends, team sentiment.(Optional)
 3 - Smart Task Manager
 
 	* Create tasks with:
@@ -36,12 +36,10 @@ Key Features
 		- Deadlines adjusted for their local time
 		- Subtasks auto-generated using AI (based on project description)
 	* Visual board (Kanban or Timeline) tailored to team working hours
-	* Progress tracking with automatic nudges if tasks fall behind
 4 - Async Collaboration Rooms
 	* Topic-based rooms (e.g., “Sprint Planning” or “Design Feedback”)
 	* Drop quick updates, video replies, or share documents
 	* Replaces live meetings with structured async discussions
-	* Threads remain organized & searchable
 5 - Accountability & Wellness Dashboard
 	* Visual daily/weekly progress
 	* Pulse check: "How are you feeling today?" — track morale over time
@@ -69,7 +67,7 @@ Key Features
 Core Entities and Relationships
 -------------------------------
 
-1 - User
+1 - Users
 
 	* id (UUID)
 
@@ -205,7 +203,7 @@ Relations:
 
 	* teamId (FK)
 
-	* createdById (FK to User)
+	* createdById 
 
 	* createdAt
 Relations:
