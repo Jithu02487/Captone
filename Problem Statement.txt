@@ -123,7 +123,7 @@ Relations:
 
 	* duedate
 
-	* endsAt (in user’s local time)
+	* endedAt (in user’s local time)
 
 	* createdAt
 
@@ -133,10 +133,6 @@ Relations:
 	One Task belongs to a Team
 
 	One User owns a Task
-
-	Can have many Subtasks (embedded or separate entity)
-
-	Can be updated by AI Copilot
 
 5 - DailyStandup(meeting)
 
@@ -217,7 +213,7 @@ Relations:
 
 	* pointsAwarded
 
-	* timestamp
+	* Date
 
 11 - UserDetails
 	
@@ -265,5 +261,7 @@ ER Diagram Relationships Summary
 	User ⟶ 1:N ⟶ Notifications
 	
 	User ⟶ 1:N ⟶ Leaderboard Entries
+
+	User ⟶ 1:N ⟶ UserDetails
 
 
