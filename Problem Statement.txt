@@ -44,10 +44,6 @@ Key Features
 	* Visual daily/weekly progress
 	* Pulse check: "How are you feeling today?" — track morale over time
 	* Leaderboard (optional) for celebrating task completion & collaboration
-6 - Integrations Hub
-	* Google Calendar, Slack, Zoom
-	* GitHub, Notion, Jira, Trello
-	* AI Copilot for summarizing long threads or identifying bottlenecks
 7 - User Roles
 	* Team Member: Manage tasks, submit stand-ups, collaborate async
 	* Team Lead: Review summaries, assign tasks, monitor pulse & productivity
@@ -117,9 +113,9 @@ Relations:
 
 	* status (enum: TODO, IN_PROGRESS, DONE)
 
-	* ownerId (FK to User)
+	* ownerId (FK to User) (many to many)
 
-	* teamId (FK)
+	//* teamId (FK)
 
 	* duedate
 
@@ -134,25 +130,25 @@ Relations:
 
 	One User owns a Task
 
-5 - DailyStandup(meeting)
+5 - DailyStandup(meeting)(Max time is 24h)		Meating_Details
 
-	* id
+	* id							* meeting_id
 
-	* teamId (FK)
+	* teamId (FK)						* user_id
 
-	* date
+	* date							* message
+	
+	* topic							* sentAt
 
-	* textUpdate
+	* startedAt
 
-	* videoUrl (optional)
-
-	* submittedAt
+	* endedAt
 
 Relations:
 
-	One DailyStandup belongs to a Team
+	One DailyStandup(meeting) belongs to a Team
 
-	Has many StandupUpdates
+	Has many meeting details
 7 - AsyncRoom
 
 	* id
@@ -163,7 +159,7 @@ Relations:
 
 	* teamId (FK)
 
-	* createdById 
+	//* createdById 
 
 	* createdAt
 Relations:
@@ -171,7 +167,7 @@ Relations:
 	One AsyncRoom has many Messages
 
 
-8 - Message / RoomMessage
+8 - RoomMessages
 
 	* id
 
