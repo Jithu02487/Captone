@@ -3,8 +3,10 @@ package com.ust.Captone.entity;
 import java.util.HashSet;
 import java.util.Set;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.ust.Captone.entity.enm.Roles;
 
+import jakarta.persistence.CascadeType;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -18,17 +20,24 @@ import jakarta.persistence.Table;
 @Table(name = "Users")
 public class MyUser {
 	@Id
-	@GeneratedValue(strategy = GenerationType.UUID)
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 	private String name;
 	private String email;
 	private Roles role;
 	
+	public Set<Task> getTasks() {
+		return tasks;
+	}
+	public void setTasks(Set<Task> tasks) {
+		this.tasks = tasks;
+	}
 	@ManyToOne
 	@JoinColumn(name = "team_id")
 	private Team team;
 	
-	@ManyToMany(mappedBy = "users")
+	@ManyToMany(mappedBy = "users", cascade = CascadeType.ALL)
+	@JsonIgnore
 	private Set<Task> tasks = new HashSet<Task>();
 	
 	public MyUser(Long id, String name, String email, Roles role, Team team) {
@@ -38,6 +47,11 @@ public class MyUser {
 		this.email = email;
 		this.role = role;
 		this.team = team;
+	}
+	@Override
+	public String toString() {
+		return "MyUser [id=" + id + ", name=" + name + ", email=" + email + ", role=" + role + ", team=" + team
+				+ ", Tasks="+ tasks+"]";
 	}
 	public Team getTeam() {
 		return team;

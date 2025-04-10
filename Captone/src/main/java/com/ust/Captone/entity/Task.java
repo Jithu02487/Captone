@@ -7,6 +7,8 @@ import java.util.Set;
 import com.ust.Captone.entity.enm.statuses;
 
 import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.JoinTable;
@@ -16,6 +18,7 @@ import jakarta.persistence.ManyToMany;
 public class Task {
 	
 	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 	private String title;
 	private String description;
@@ -27,10 +30,16 @@ public class Task {
 	
 	@ManyToMany
 	@JoinTable(name = "user_task", 
-	joinColumns = @JoinColumn(name = "user_id"),
-	inverseJoinColumns = @JoinColumn(name = "task_id"))
+	joinColumns = @JoinColumn(name = "task_id"),
+	inverseJoinColumns = @JoinColumn(name = "user_id"))
 	private Set<MyUser> users = new HashSet<MyUser>();
 	
+	public Set<MyUser> getUsers() {
+		return users;
+	}
+	public void setUsers(Set<MyUser> users) {
+		this.users = users;
+	}
 	public Long getId() {
 		return id;
 	}

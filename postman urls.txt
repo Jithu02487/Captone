@@ -1,0 +1,72 @@
+postman
+--------
+
+http://localhost:8080/users
+
+http://localhost:8080/teams
+
+http://localhost:8080/tasks
+
+http://localhost:8080/meetings
+
+http://localhost:8080/rooms
+
+
+Adding
+-------
+
+Team
+==============
+http://localhost:8080/addTeam
+
+	{
+   	 "name":"workers",
+    	"description":"working"
+	}
+
+
+User
+==============
+http://localhost:8080/addUser
+
+	{
+    "name":"anju",
+    "email":"anju@.com",
+    "role":"ADMIN",
+    "teamId":"1"
+
+	}
+
+Task
+==============
+http://localhost:8080/addTask
+
+	{
+    "title":"assighnment",
+    "description":"assighnment to do",
+    "status":"TODO",
+    "userId":"1"
+	}
+
+
+Meeting
+==============
+http://localhost:8080/addMeeting //
+
+	{
+    "topic":"progress",
+    "teamId":"1"
+	}
+
+Room
+==============
+http://localhost:8080/addRoom
+
+	{
+    "name":"chat",
+    "topic" : "developing",
+    "teamId": "1"
+	}
+
+http://localhost:8080/deleteRoom/1
+

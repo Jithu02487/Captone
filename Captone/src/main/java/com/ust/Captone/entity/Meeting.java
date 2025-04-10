@@ -6,6 +6,8 @@ import java.util.List;
 
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
@@ -15,8 +17,8 @@ import jakarta.persistence.OneToMany;
 public class Meeting {
 	
 	@Id
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
-	private Date date;
 	private String topic;
 	private Date startedAt;
 	private Date endedAt;
@@ -25,8 +27,8 @@ public class Meeting {
 	@JoinColumn(name = "team_id")
 	private Team team;
 	
-	@OneToMany(mappedBy = "meeting", cascade = CascadeType.ALL)
-	List<MeetingMessages> details = new ArrayList<MeetingMessages>();
+//	@OneToMany(mappedBy = "meeting", cascade = CascadeType.ALL)
+//	List<MeetingMessages> details = new ArrayList<MeetingMessages>();
 
 	public Long getId() {
 		return id;
@@ -34,14 +36,6 @@ public class Meeting {
 
 	public void setId(Long id) {
 		this.id = id;
-	}
-
-	public Date getDate() {
-		return date;
-	}
-
-	public void setDate(Date date) {
-		this.date = date;
 	}
 
 	public String getTopic() {
@@ -78,14 +72,13 @@ public class Meeting {
 
 	@Override
 	public String toString() {
-		return "Meeting [id=" + id + ", date=" + date + ", topic=" + topic + ", startedAt=" + startedAt + ", endedAt="
+		return "Meeting [id=" + id + ", topic=" + topic + ", startedAt=" + startedAt + ", endedAt="
 				+ endedAt + ", team=" + team + "]";
 	}
 
 	public Meeting(Long id, Date date, String topic, Date startedAt, Date endedAt, Team team) {
 		super();
 		this.id = id;
-		this.date = date;
 		this.topic = topic;
 		this.startedAt = startedAt;
 		this.endedAt = endedAt;

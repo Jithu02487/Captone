@@ -1,0 +1,24 @@
+sighn up 
+---------
+	Anyone can signup.
+		as team_member or team_head.
+
+Team_Head
+------
+
+	can create :
+		team
+		task
+		room
+		meeting
+
+Team_Member
+----
+
+	can :
+		create meeting
+		
+		do messages in rooms and meetings
+		
+		
+

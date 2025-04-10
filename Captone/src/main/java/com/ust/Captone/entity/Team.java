@@ -4,6 +4,8 @@ import java.sql.Date;
 import java.util.ArrayList;
 import java.util.List;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -15,16 +17,36 @@ import jakarta.persistence.OneToMany;
 public class Team {
 	
 	@Id
-	@GeneratedValue(strategy = GenerationType.UUID)
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 	private String name;
 	private String description;
 	private Date createdAt;
 	
+	@JsonIgnore
 	@OneToMany(mappedBy = "team", cascade = CascadeType.ALL)
 	List<Meeting> meetings = new ArrayList<Meeting>();
 	
+	@JsonIgnore
+	@OneToMany(mappedBy = "team", cascade = CascadeType.ALL)
+	List<MyUser> users = new ArrayList<MyUser>();
 	
+	@JsonIgnore
+	@OneToMany(mappedBy = "team", cascade = CascadeType.ALL)
+	List<Room> rooms = new ArrayList<Room>();
+	
+	public List<Meeting> getMeetings() {
+		return meetings;
+	}
+	public void setMeetings(List<Meeting> meetings) {
+		this.meetings = meetings;
+	}
+	public List<MyUser> getUsers() {
+		return users;
+	}
+	public void setUsers(List<MyUser> users) {
+		this.users = users;
+	}
 	public Long getId() {
 		return id;
 	}
