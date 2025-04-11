@@ -58,6 +58,17 @@ http://localhost:8080/addMeeting //
     "teamId":"1"
 	}
 
+MeetingMessage
+===============
+http://localhost:8080/addMeetMsg
+
+	{
+    "message" : "i am here",
+    "meetingId": "1"
+	}
+
+
+
 Room
 ==============
 http://localhost:8080/addRoom
@@ -69,4 +80,5 @@ http://localhost:8080/addRoom
 	}
 
 http://localhost:8080/deleteRoom/1
+
 

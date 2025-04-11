@@ -1,6 +1,8 @@
 package com.ust.Captone.entity;
 
+import java.util.ArrayList;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
@@ -14,6 +16,7 @@ import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToMany;
 import jakarta.persistence.ManyToOne;
+import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
 
 @Entity
@@ -26,12 +29,6 @@ public class MyUser {
 	private String email;
 	private Roles role;
 	
-	public Set<Task> getTasks() {
-		return tasks;
-	}
-	public void setTasks(Set<Task> tasks) {
-		this.tasks = tasks;
-	}
 	@ManyToOne
 	@JoinColumn(name = "team_id")
 	private Team team;
@@ -39,6 +36,35 @@ public class MyUser {
 	@ManyToMany(mappedBy = "users", cascade = CascadeType.ALL)
 	@JsonIgnore
 	private Set<Task> tasks = new HashSet<Task>();
+	
+	@OneToMany(mappedBy = "user", cascade = CascadeType.ALL)
+	@JsonIgnore
+	private List<MeetingMessages> messages = new ArrayList<MeetingMessages>();
+	
+	@JsonIgnore
+	@OneToMany(mappedBy = "user", cascade = CascadeType.ALL)
+	private List<RoomMessages> msgs = new ArrayList<RoomMessages>();
+	
+	
+	
+	public List<MeetingMessages> getMessages() {
+		return messages;
+	}
+	public void setMessages(List<MeetingMessages> messages) {
+		this.messages = messages;
+	}
+	public List<RoomMessages> getMsgs() {
+		return msgs;
+	}
+	public void setMsgs(List<RoomMessages> msgs) {
+		this.msgs = msgs;
+	}
+	public Set<Task> getTasks() {
+		return tasks;
+	}
+	public void setTasks(Set<Task> tasks) {
+		this.tasks = tasks;
+	}
 	
 	public MyUser(Long id, String name, String email, Roles role, Team team) {
 		super();

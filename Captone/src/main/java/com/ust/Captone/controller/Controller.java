@@ -7,21 +7,28 @@ import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.ust.Captone.dto.MeetingDto;
+import com.ust.Captone.dto.MeetingMsgDto;
 import com.ust.Captone.dto.MyUserDto;
 import com.ust.Captone.dto.RoomDto;
+import com.ust.Captone.dto.RoomMsgDto;
 import com.ust.Captone.dto.TaskDto;
 import com.ust.Captone.dto.TeamDto;
 import com.ust.Captone.entity.Meeting;
+import com.ust.Captone.entity.MeetingMessages;
 import com.ust.Captone.entity.MyUser;
 import com.ust.Captone.entity.Room;
+import com.ust.Captone.entity.RoomMessages;
 import com.ust.Captone.entity.Task;
 import com.ust.Captone.entity.Team;
+import com.ust.Captone.services.MeetingMsgService;
 import com.ust.Captone.services.Meetingservice;
 import com.ust.Captone.services.MyUserService;
+import com.ust.Captone.services.RoomMsgService;
 import com.ust.Captone.services.RoomService;
 import com.ust.Captone.services.TaskService;
 import com.ust.Captone.services.TeamService;
@@ -30,7 +37,7 @@ import com.ust.Captone.services.TeamService;
 public class Controller {
 	
 	
-//	Services----------------------
+//Services----------------------
 	
 	@Autowired
 	private MyUserService us;
@@ -47,7 +54,13 @@ public class Controller {
 	@Autowired
 	private RoomService rs;
 	
-//	Team--------------------------------------------
+	@Autowired
+	private MeetingMsgService mms;
+	
+	@Autowired
+	private RoomMsgService rms;
+	
+//Team--------------------------------------------
 	
 	@PostMapping("/addTeam")
 	public String addTeam(@RequestBody TeamDto team) {
@@ -59,7 +72,7 @@ public class Controller {
 		return ts.findAllTeams();
 	}
 	
-//	Meeting-----------------------------------------
+//Meeting-----------------------------------------
 	
 	@PostMapping("/addMeeting")
 	public String addMeeting(@RequestBody MeetingDto meeting) {
@@ -75,8 +88,25 @@ public class Controller {
 		return ms.deleteMeeting(meeting);
 	}
 	
+//MeetingMessage---------------------
 	
-//	User---------------------------------
+	@PostMapping("/addMeetMsg")
+	public String addMeetMsg(@RequestBody MeetingMsgDto msg) {
+		return mms.addMessage(msg);
+	}
+		
+	@GetMapping("/meetMsgs")
+	public List<MeetingMessages> msgs(){
+		return mms.displayMsgs();
+	}
+		
+	@DeleteMapping("/deletMeetingMsg/{id}")
+	public String deleteMsg(@PathVariable Long id) {
+		return mms.deleteMsg(id);
+	}
+	
+	
+//User---------------------------------
 	
 	@PostMapping("/addUser")
 	public String addTeam(@RequestBody MyUserDto user) {
@@ -95,7 +125,7 @@ public class Controller {
 	}
 	
 	
-//	Task------------------
+//Task------------------
 	
 	@PostMapping("/addTask")
 	public String addTeam(@RequestBody TaskDto task) {
@@ -113,7 +143,7 @@ public class Controller {
 	}
 	
 	
-//	Room---------------------------
+//Room---------------------------
 	
 	@PostMapping("/addRoom")
 	public String addRoom(@RequestBody RoomDto room) {
@@ -130,7 +160,22 @@ public class Controller {
 		return rs.deleteRoom(id);
 	}
 	
+//RoomMessages---------------------------
 	
+	@PostMapping("/addRoomMsg")
+	public String addRoomMsg(@RequestBody RoomMsgDto msg) {
+		return rms.addMsg(msg);
+	}
 	
+	@GetMapping("/roomMsgs")
+	public List<RoomMessages> displayRoomMsgs(){
+		return rms.displayRoomMsgs();
+	}
+
+	
+	@DeleteMapping("/deleteRoomMsg/{id}")
+	public String deleteRoomMsg(@PathVariable Long id) {
+		return rms.deleteRoomMsg(id);
+	}
 
 }

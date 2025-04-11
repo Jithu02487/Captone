@@ -76,7 +76,7 @@ Core Entities and Relationships
 
 	* email
 
-	* role (enum: ADMIN, TEAM_LEAD, TEAM_MEMBER)
+	* role (enum: TEAM_HEAD,TEAM_MEMBER)
 
 	* teamId (FK)
 Relations:
@@ -135,7 +135,7 @@ Relations:
 
 	One User owns a Task
 
-5 - DailyStandup(meeting)(Max time is 24h)		Meating_Details
+5 - DailyStandup(meeting)(Max time is 24h)		Meating_Messages
 
 	* id							* meeting_id
 

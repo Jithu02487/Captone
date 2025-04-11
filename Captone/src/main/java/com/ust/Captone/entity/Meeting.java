@@ -4,6 +4,8 @@ import java.sql.Date;
 import java.util.ArrayList;
 import java.util.List;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -27,8 +29,9 @@ public class Meeting {
 	@JoinColumn(name = "team_id")
 	private Team team;
 	
-//	@OneToMany(mappedBy = "meeting", cascade = CascadeType.ALL)
-//	List<MeetingMessages> details = new ArrayList<MeetingMessages>();
+	@JsonIgnore
+	@OneToMany(mappedBy = "meeting", cascade = CascadeType.ALL)
+	List<MeetingMessages> details = new ArrayList<MeetingMessages>();
 
 	public Long getId() {
 		return id;

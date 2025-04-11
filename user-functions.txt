@@ -1,19 +1,29 @@
 sighn up 
 ---------
-	Anyone can signup.
+	Anyone can signup:
 		as team_member or team_head.
 
-Team_Head
-------
+	While signuping as team_head:
+		
+		First team creation page will come.
+		Then name and email
 
-	can create :
-		team
-		task
-		room
-		meeting
+	While signuping as team_member:
+
+		should enter team id also.
+		
+Team_Head
+----------
+
+	can  :
+		create team
+		create task
+		create room
+		create meeting
+		messaging in room and meeting
 
 Team_Member
-----
+-----------
 
 	can :
 		create meeting
