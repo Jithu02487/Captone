@@ -3,6 +3,9 @@ Problem Statement 6:
 Scenario: The shift to remote work has brought about significant challenges in team coordination and task management. Teams distributed across various time zones often struggle with asynchronous communication, leading to delays in project timelines and misunderstandings about task responsibilities. Additionally, the lack of face-to-face interaction can result in a disconnect between team members, making it harder to maintain accountability and ensure that everyone is on the same page. Traditional task management tools may not provide the level of flexibility needed to accommodate different work styles and time zones, leaving gaps in communication and collaboration.
 --------------------------------------------------
 
+	Name : TaskPulse
+
+
 Core Problem Areas Solved
 -------------------------
 

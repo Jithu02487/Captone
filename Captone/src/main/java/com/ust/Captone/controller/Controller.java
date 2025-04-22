@@ -35,7 +35,7 @@ import com.ust.Captone.services.TaskService;
 import com.ust.Captone.services.TeamService;
 
 @RestController
-@CrossOrigin(origins = "http://localhost:3001")
+@CrossOrigin(origins = "http://localhost:3000")
 public class Controller {
 	
 	
