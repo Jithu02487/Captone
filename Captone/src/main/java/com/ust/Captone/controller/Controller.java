@@ -3,6 +3,7 @@ package com.ust.Captone.controller;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -34,6 +35,7 @@ import com.ust.Captone.services.TaskService;
 import com.ust.Captone.services.TeamService;
 
 @RestController
+@CrossOrigin(origins = "http://localhost:3001")
 public class Controller {
 	
 	
@@ -70,6 +72,11 @@ public class Controller {
 	@GetMapping("/teams")
 	public List<Team> displayTeams(){
 		return ts.findAllTeams();
+	}
+	
+	@DeleteMapping("/deletTeam/{id}")
+	public String deleteTeam(@PathVariable Long id) {
+		return ts.deleteTeam(id);
 	}
 	
 //Meeting-----------------------------------------

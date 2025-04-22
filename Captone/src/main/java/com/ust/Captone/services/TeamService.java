@@ -3,6 +3,7 @@ package com.ust.Captone.services;
 import java.sql.Date;
 import java.time.LocalDate;
 import java.util.List;
+import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -32,6 +33,17 @@ public class TeamService {
 	
 	public List<Team> findAllTeams(){
 		return tr.findAll();
+	}
+	
+	public String deleteTeam(Long id) {
+		Optional<Team> team = tr.findById(id);
+		if(!team.isPresent()){
+			return "Invalid Team id.";
+		}
+		
+		Team dteam = team.get();
+		tr.delete(dteam);
+		return "Team deleted.";
 	}
 
 }
