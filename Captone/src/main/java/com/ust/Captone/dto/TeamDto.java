@@ -1,4 +1,4 @@
-package com.ust.Captone.dto;
+package com.ust.Capstone.dto;
 
 public class TeamDto {
 	
