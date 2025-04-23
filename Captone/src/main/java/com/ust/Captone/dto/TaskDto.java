@@ -1,4 +1,4 @@
-package com.ust.Captone.dto;
+package com.ust.Capstone.dto;
 
 import java.sql.Date;
 
