@@ -28,6 +28,7 @@ public class MyUser {
 	private String name;
 	private String email;
 	private Roles role;
+	private boolean enabled;
 	
 	@ManyToOne
 	@JoinColumn(name = "team_id")
@@ -66,13 +67,19 @@ public class MyUser {
 		this.tasks = tasks;
 	}
 	
-	public MyUser(Long id, String name, String email, Roles role, Team team) {
+	
+	public MyUser(Long id, String name, String email, Roles role, boolean enabled, Team team, Set<Task> tasks,
+			List<MeetingMessages> messages, List<RoomMessages> msgs) {
 		super();
 		this.id = id;
 		this.name = name;
 		this.email = email;
 		this.role = role;
+		this.enabled = enabled;
 		this.team = team;
+		this.tasks = tasks;
+		this.messages = messages;
+		this.msgs = msgs;
 	}
 	@Override
 	public String toString() {
@@ -81,6 +88,13 @@ public class MyUser {
 	}
 	public Team getTeam() {
 		return team;
+	}
+	
+	public boolean isEnabled() {
+		return enabled;
+	}
+	public void setEnabled(boolean enabled) {
+		this.enabled = enabled;
 	}
 	public void setTeam(Team team) {
 		this.team = team;

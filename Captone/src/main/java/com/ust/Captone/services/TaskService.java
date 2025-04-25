@@ -55,6 +55,17 @@ public class TaskService {
 		return tskr.findAll();
 	}
 	
+	public List<Task> findTaskById(Long id){
+		Optional<MyUser> ouser = ur.findById(id);
+		List<Task> tasks=null;
+		if(ouser.isPresent()) {
+			MyUser user = ouser.get();
+			tasks=tskr.findByusers(user);
+		}
+		return tasks;
+		
+	}
+	
 	public String deleteTask(Long id) {
 		Optional<Task> task = tskr.findById(id);
 		if(!task.isPresent()){
@@ -64,6 +75,19 @@ public class TaskService {
 		Task dtask = task.get();
 		tskr.delete(dtask);
 		return "Task deleted.";
+	}
+	
+	public String updateTask(Long id,statuses status) {
+		Optional<Task> task = tskr.findById(id);
+		if(!task.isPresent()){
+			return "Invalid task id.";
+		}
+		
+		Task utask = task.get();
+		utask.setStatus(status);
+		tskr.save(utask);
+		
+		return "Task Updated.";
 	}
 
 }

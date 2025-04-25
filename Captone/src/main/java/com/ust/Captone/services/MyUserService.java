@@ -8,7 +8,6 @@ import org.springframework.stereotype.Service;
 
 import com.ust.Captone.dto.MyUserDto;
 import com.ust.Captone.entity.MyUser;
-import com.ust.Captone.entity.Task;
 import com.ust.Captone.entity.Team;
 import com.ust.Captone.repository.MyuserRepo;
 import com.ust.Captone.repository.TeamRepo;
@@ -21,6 +20,12 @@ public class MyUserService {
 	
 	@Autowired
 	private TeamRepo tr;
+	
+//	@Autowired
+//    private TokenRepo verificationTokenRepository;
+	
+	@Autowired
+	private EmailService emailService;
 	
 	
 //	Adding a new user
@@ -36,6 +41,13 @@ public class MyUserService {
 		savedUser.setRole(user.getRole());
 		savedUser.setTeam(oteam.get());
 		ur.save(savedUser);
+		
+//		String token = UUID.randomUUID().toString();
+//		verificationTokenRepository.save(new Token(token, savedUser));
+//
+//		String link = "http://localhost:3000/verify?token=" + token;
+//		emailService.sendVerificationEmail(user.getEmail(), link);
+		
 		return "Succesfully added User";
 		
 	}
@@ -54,5 +66,10 @@ public class MyUserService {
 		ur.delete(duser);
 		return "User deleted.";
 	}
+	
+	public MyUser findUserByid(Long id) {
+		return ur.findById(id).get();
+	}
+	
 
 }

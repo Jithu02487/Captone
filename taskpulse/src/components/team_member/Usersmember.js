@@ -3,7 +3,7 @@ import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import Swal from "sweetalert2";
 
-export function Users(){
+export function Usersmember(){
 
     const [users, setUsers] = useState([]);
     const nav = useNavigate()
@@ -54,8 +54,6 @@ export function Users(){
       }
 
     return <div>
-    <button className="btn btn-secondary" onClick={addUser}>ADD NEW USER</button>
-        <hr/>
     <h2>MEMBERS</h2>
     <table className="table table-striped">
         <thead>
@@ -64,7 +62,6 @@ export function Users(){
                 <th scope="col">Name</th>
                 <th scope="col">Email</th>
                 <th scope="col">Role</th>
-                <th scope="col"></th>
             </tr>
         </thead>
         <tbody>
@@ -75,8 +72,6 @@ export function Users(){
                     <td>{user.name}</td>
                     <td>{user.email}</td>
                     <td>{user.role}</td>
-                    <td><a href="#!" onClick={()=>deleteuser(user.id)} class="text-danger" data-mdb-tooltip-init title="Delete User"><i
-                      class="fas fa-trash-alt"></i></a></td>
                 </tr>
             ))):(
                 <tr>

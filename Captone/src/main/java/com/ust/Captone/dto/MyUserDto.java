@@ -8,6 +8,7 @@ public class MyUserDto {
 	private String email;
 	private Roles role;
 	private Long teamId;
+	private boolean enabled;
 	public String getName() {
 		return name;
 	}
@@ -31,6 +32,12 @@ public class MyUserDto {
 	}
 	public void setTeamId(Long teamId) {
 		this.teamId = teamId;
+	}
+	public boolean isEnabled() {
+		return enabled;
+	}
+	public void setEnabled(boolean enabled) {
+		this.enabled = enabled;
 	}
 
 	

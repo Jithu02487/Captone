@@ -29,6 +29,9 @@ Team_Member
 		create meeting
 		
 		do messages in rooms and meetings
+
+
+app password: dekhpilberwcjlpy
 		
 		
 

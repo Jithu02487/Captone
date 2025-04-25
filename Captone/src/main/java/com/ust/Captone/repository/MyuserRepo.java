@@ -8,4 +8,5 @@ import com.ust.Captone.entity.MyUser;
 @Repository
 public interface MyuserRepo extends JpaRepository<MyUser, Long>{
 
+
 }

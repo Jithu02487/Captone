@@ -15,22 +15,17 @@ export function Sidebar(){
                 </a>
                 <ul class="nav nav-pills flex-column mb-sm-auto mb-0 align-items-center align-items-sm-start" id="menu">
                     <li class="nav-item">
-                        <a href="home" class="nav-link align-middle px-0">
+                        <a href="#" class="nav-link align-middle px-0">
                             <i class="fs-4 bi-house"></i> <span class="ms-1 d-none d-sm-inline">Home</span>
                         </a>
                     </li>
                     <li>
-                        <a href="/tasks" class="nav-link px-0 align-middle">
+                        <a href="/member/tasks" class="nav-link px-0 align-middle">
                             <i class="fs-4 bi-table"></i> <span class="ms-1 d-none d-sm-inline">Tasks</span></a>
                     </li>
                     <li>
-                        <a href="/users" data-bs-toggle="collapse" class="nav-link px-0 align-middle ">
+                        <a href="/member/users" data-bs-toggle="collapse" class="nav-link px-0 align-middle ">
                             <i class="fs-4 bi-bootstrap"></i> <span class="ms-1 d-none d-sm-inline">Members</span></a>
-                        
-                    </li>
-                    <li>
-                        <a href="rooms" data-bs-toggle="collapse" class="nav-link px-0 align-middle ">
-                            <i class="fs-4 bi-bootstrap"></i> <span class="ms-1 d-none d-sm-inline">Rooms</span></a>
                         
                     </li>
                     {/* <li>
@@ -39,20 +34,11 @@ export function Sidebar(){
                         
                     </li> */}
                     <li>
-                        <a href="meetings" data-bs-toggle="collapse" class="nav-link px-0 align-middle ">
-                            <i class="fs-4 bi-bootstrap"></i> <span class="ms-1 d-none d-sm-inline">Meetings</span></a>
-                        
-                    </li>
-                    <li>
-                        <a href="chats" data-bs-toggle="collapse" class="nav-link px-0 align-middle ">
+                        <a href="/member/chats" data-bs-toggle="collapse" class="nav-link px-0 align-middle ">
                             <i class="fs-4 bi-bootstrap"></i> <span class="ms-1 d-none d-sm-inline">Chat</span></a>
                         
                     </li>
                     
-                    <li>
-                        <a href="#" class="nav-link px-0 align-middle">
-                            <i class="fs-4 bi-people"></i> <span class="ms-1 d-none d-sm-inline">Customers</span> </a>
-                    </li>
                 </ul>
                 <hr/>
             </div>
