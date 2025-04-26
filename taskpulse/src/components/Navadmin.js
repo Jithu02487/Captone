@@ -13,8 +13,12 @@ export function Navadmin({ teamId, userid }){
     const [username, setUsername] = useState("");
 
     useEffect(()=>{
+      console.log(userid);
+      
       axios.get(`http://localhost:8080/users/${userid}`)
       .then(response => {
+        console.log(response.data);
+        
           setUsername(response.data.name)
       })
       .catch(error => {
