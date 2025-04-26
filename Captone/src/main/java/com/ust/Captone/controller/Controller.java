@@ -63,17 +63,17 @@ public class Controller {
 	@Autowired
 	private MyuserRepo mur;
 	
-	@Autowired
-	private MyUserService us;
+//	@Autowired
+//	private MyUserService us;
 	
-	@Autowired
-	private TeamService ts;
+//	@Autowired
+//	private TeamService ts;
 	
-	@Autowired
-	private TaskService tsks;
+//	@Autowired
+//	private TaskService tsks;
 	
-	@Autowired
-	private Meetingservice ms;
+//	@Autowired
+//	private Meetingservice ms;
 	
 	@Autowired
 	private RoomService rs;
@@ -117,122 +117,122 @@ public class Controller {
 	
 //Team--------------------------------------------
 	
-	@PostMapping("/addTeam")
-	public String addTeam(@RequestBody TeamDto team) {
-		return ts.addTeam(team);
-	}
-	
-	@GetMapping("/teams")
-	public List<Team> displayTeams(){
-		return ts.findAllTeams();
-	}
-	
-	@DeleteMapping("/deletTeam/{id}")
-	public String deleteTeam(@PathVariable Long id) {
-		return ts.deleteTeam(id);
-	}
+//	@PostMapping("/addTeam")
+//	public String addTeam(@RequestBody TeamDto team) {
+//		return ts.addTeam(team);
+//	}
+//	
+//	@GetMapping("/teams")
+//	public List<Team> displayTeams(){
+//		return ts.findAllTeams();
+//	}
+//	
+//	@DeleteMapping("/deletTeam/{id}")
+//	public String deleteTeam(@PathVariable Long id) {
+//		return ts.deleteTeam(id);
+//	}
 	
 //Meeting-----------------------------------------
 	
-	@PostMapping("/addMeeting")
-	public String addMeeting(@RequestBody MeetingDto meeting) {
-		return ms.addMeeting(meeting);
-	}
-	
-	@GetMapping("/meetings")
-	public List<Meeting> displayMeetings(){
-		return ms.displayMeetings();
-	}
-	@DeleteMapping("/deleteMeeting")
-	public String deleteMeet(Meeting meeting) {
-		return ms.deleteMeeting(meeting);
-	}
+//	@PostMapping("/addMeeting")
+//	public String addMeeting(@RequestBody MeetingDto meeting) {
+//		return ms.addMeeting(meeting);
+//	}
+//	
+//	@GetMapping("/meetings")
+//	public List<Meeting> displayMeetings(){
+//		return ms.displayMeetings();
+//	}
+//	@DeleteMapping("/deleteMeeting")
+//	public String deleteMeet(Meeting meeting) {
+//		return ms.deleteMeeting(meeting);
+//	}
 	
 //MeetingMessage---------------------
 	
-	@PostMapping("/addMeetMsg")
-	public String addMeetMsg(@RequestBody MeetingMsgDto msg) {
-		return mms.addMessage(msg);
-	}
-		
-	@GetMapping("/meetMsgs")
-	public List<MeetingMessages> msgs(){
-		return mms.displayMsgs();
-	}
-		
-	@DeleteMapping("/deletMeetingMsg/{id}")
-	public String deleteMsg(@PathVariable Long id) {
-		return mms.deleteMsg(id);
-	}
+//	@PostMapping("/addMeetMsg")
+//	public String addMeetMsg(@RequestBody MeetingMsgDto msg) {
+//		return mms.addMessage(msg);
+//	}
+//		
+//	@GetMapping("/meetMsgs")
+//	public List<MeetingMessages> msgs(){
+//		return mms.displayMsgs();
+//	}
+//		
+//	@DeleteMapping("/deletMeetingMsg/{id}")
+//	public String deleteMsg(@PathVariable Long id) {
+//		return mms.deleteMsg(id);
+//	}
 	
 	
 //User---------------------------------
 	
-	@PostMapping("/addUser")
-	public String addTeam(@RequestBody MyUserDto user) {
-		return us.addUser(user);
-	}
-	
-	
-	@GetMapping("/users")
-	public List<MyUser> displayUsers(){
-		return us.findAllUsers();
-	}
-	
-	@GetMapping("/users/{id}")
-	public MyUser displayUsersByid(@PathVariable Long id){
-		return us.findUserByid(id);
-	}
-	
-	@DeleteMapping("/deletUser/{id}")
-	public String deleteUser(@PathVariable Long id) {
-		return us.deleteUser(id);
-	}
-	
+//	@PostMapping("/addUser")
+//	public String addTeam(@RequestBody MyUserDto user) {
+//		return us.addUser(user);
+//	}
+//	
+//	
+//	@GetMapping("/users")
+//	public List<MyUser> displayUsers(){
+//		return us.findAllUsers();
+//	}
+//	
+//	@GetMapping("/users/{id}")
+//	public MyUser displayUsersByid(@PathVariable Long id){
+//		return us.findUserByid(id);
+//	}
+//	
+//	@DeleteMapping("/deletUser/{id}")
+//	public String deleteUser(@PathVariable Long id) {
+//		return us.deleteUser(id);
+//	}
+//	
 	
 //Task------------------
 	
-	@PostMapping("/addTask")
-	public String addTeam(@RequestBody TaskDto task) {
-		return tsks.addTask(task);
-	}
-	
-	@GetMapping("/tasks")
-	public List<Task> displayTasks(){
-		return tsks.findAllTasks();
-	}
-	
-	@GetMapping("/tasksByUserId/{id}")
-	public List<Task> displayTasks(@PathVariable Long id){
-		return tsks.findTaskById(id);
-	}
-	
-	@DeleteMapping("/deletTask/{id}")
-	public String deleteTask(@PathVariable Long id) {
-		return tsks.deleteTask(id);
-	}
-	
-	@PutMapping("/updateTask/{id}/{status}")
-	public String deleteTask(@PathVariable Long id, @PathVariable statuses status) {
-		return tsks.updateTask(id, status);
-	}
+//	@PostMapping("/addTask")
+//	public String addTeam(@RequestBody TaskDto task) {
+//		return tsks.addTask(task);
+//	}
+//	
+//	@GetMapping("/tasks")
+//	public List<Task> displayTasks(){
+//		return tsks.findAllTasks();
+//	}
+//	
+//	@GetMapping("/tasksByUserId/{id}")
+//	public List<Task> displayTasks(@PathVariable Long id){
+//		return tsks.findTaskById(id);
+//	}
+//	
+//	@DeleteMapping("/deletTask/{id}")
+//	public String deleteTask(@PathVariable Long id) {
+//		return tsks.deleteTask(id);
+//	}
+//	
+//	@PutMapping("/updateTask/{id}/{status}")
+//	public String deleteTask(@PathVariable Long id, @PathVariable statuses status) {
+//		return tsks.updateTask(id, status);
+//	}
 	
 //Room---------------------------
 	
-	@PostMapping("/addRoom")
-	public String addRoom(@RequestBody RoomDto room) {
-		return rs.addRoom(room);
-	}
-	
-	@GetMapping("/rooms")
-	public List<Room> displayRooms(){
-		return rs.displayRooms();
-	}
-	
-	@DeleteMapping("/deleteRoom/{id}")
-	public String deleteRoom(@PathVariable Long id) {
-		return rs.deleteRoom(id);
-	}
+//	@PostMapping("/addRoom")
+//	public String addRoom(@RequestBody RoomDto room) {
+//		return rs.addRoom(room);
+//	}
+//	
+//	@GetMapping("/rooms")
+//	public List<Room> displayRooms(){
+//		return rs.displayRooms();
+//	}
+//	
+//	@DeleteMapping("/deleteRoom/{id}")
+//	public String deleteRoom(@PathVariable Long id) {
+//		return rs.deleteRoom(id);
+//	}
 	
 //RoomMessages---------------------------
 	
