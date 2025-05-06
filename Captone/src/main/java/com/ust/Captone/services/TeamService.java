@@ -19,16 +19,16 @@ public class TeamService {
 	@Autowired
 	private TeamRepo tr;
 	
-	public String addTeam(TeamDto team) {
+	public Team addTeam(TeamDto team) {
 		Team savedTeam = new Team();
 		savedTeam.setName(team.getName());
 		savedTeam.setDescription(team.getDescription());
 		savedTeam.setCreatedAt(Date.valueOf(LocalDate.now()));
 		Team TeamSaved = tr.save(savedTeam);
 		if(TeamSaved!=null) {
-			return "Succesfully added new team";
+			return TeamSaved;
 		}
-		return "Team add failed";
+		return null;
 	}
 	
 	public List<Team> findAllTeams(){

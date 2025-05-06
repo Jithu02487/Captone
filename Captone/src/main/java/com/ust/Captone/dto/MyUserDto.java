@@ -6,6 +6,7 @@ public class MyUserDto {
 	
 	private String name;
 	private String email;
+	private String password;
 	private Roles role;
 	private Long teamId;
 	private boolean enabled;
@@ -38,6 +39,12 @@ public class MyUserDto {
 	}
 	public void setEnabled(boolean enabled) {
 		this.enabled = enabled;
+	}
+	public String getPassword() {
+		return password;
+	}
+	public void setPassword(String password) {
+		this.password = password;
 	}
 
 	

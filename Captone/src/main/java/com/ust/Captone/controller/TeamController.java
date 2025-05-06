@@ -21,7 +21,7 @@ public class TeamController {
 	private TeamService ts;
 	
 	@PostMapping("/addTeam")
-	public String addTeam(@RequestBody TeamDto team) {
+	public Team addTeam(@RequestBody TeamDto team) {
 		return ts.addTeam(team);
 	}
 	

@@ -13,7 +13,7 @@ export function Navmember({ teamId, userid }){
     const [username, setUsername] = useState("");
 
     useEffect(()=>{
-      axios.get(`http://localhost:8080/users/${userid}`)
+      axios.get(`http://localhost:8081/users/${userid}`)
       .then(response => {
           setUsername(response.data.name)
       })

@@ -8,7 +8,7 @@ export function Rooms(){
     const [rooms, setRooms] = useState([]);
 
     useEffect(() => {
-        axios.get('http://localhost:8080/rooms')
+        axios.get('http://localhost:8081/rooms')
             .then(response => {
                 setRooms(response.data); // Store data in state
             })

@@ -16,6 +16,10 @@ import { Tasksmember } from './components/team_member/Tasks';
 import { Usersmember } from './components/team_member/Usersmember';
 import Chatmember from './components/team_member/Chatmember';
 import { Dashbord } from './components/admin/Dashbord';
+import { Signup } from './components/public/Signup';
+import { SignIn } from './components/public/SignIn';
+import { ForgetPass } from './components/public/FogetPass';
+import { Reset } from './components/public/Reset';
 
 function App() {
 
@@ -23,8 +27,17 @@ function App() {
   return (
     <div className="App">
       
+      
         <Routes>
-          <Route path="/" element={<Navadmin teamId="34" userid="33"/>}>
+      {/* PUBLIC */}
+      <Route path='/signup' element={<Signup/>}/>
+      <Route path='/verify' element={<VerifyToken/>}/>
+      <Route path='/signin' element={<SignIn/>}/>
+      <Route path='/resetpass' element={<ForgetPass/>}/>
+      <Route path='/reset' element={<Reset/>}/>
+
+      {/* ADMIN */}
+          <Route path="/" element={<Navadmin teamId="1" userid="289"/>}>
             <Route path="users" element={<Users />} />
             <Route path="teams" element={<Teams />} />
             <Route path="tasks" element={<Tasks />} />
@@ -35,14 +48,14 @@ function App() {
             <Route path="home" element={<Dashbord />} />
             <Route path="verify" element={<VerifyToken />} />
             <Route path="chats" element={<Chat />} />
-            {/* Add more nested routes here */}
+
+
+          {/* MEMBER */}
           </Route>
-          <Route path="/member" element={<Navmember teamId="34" userid="65"/>}>
+          <Route path="/member" element={<Navmember teamId="1" userid="4"/>}>
             <Route path="tasks" element={<Tasksmember />}/>
             <Route path="users" element={<Usersmember />}/>
             <Route path="chats" element={<Chatmember />}/>
-    
-            {/* <Route path="chats" element={<Chat teamId="34" username="manu" />} /> */}
         </Route>
         </Routes>
       

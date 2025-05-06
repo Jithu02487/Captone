@@ -12,7 +12,7 @@ export function Tasks(){
     const navigate = useNavigate()
 
     useEffect(() => {
-        axios.get('http://localhost:8080/tasks')
+        axios.get('http://localhost:8081/tasks')
             .then(response => {
                 setTasks(response.data); // Store data in state
             })
@@ -39,7 +39,7 @@ export function Tasks(){
         confirmButtonText: 'Yes, delete it!',
       }).then((result) => {
         if (result.isConfirmed) {
-          axios.delete(`http://localhost:8080/deletTask/${taskid}`)
+          axios.delete(`http://localhost:8081/deletTask/${taskid}`)
               .then(() => {
                 Swal.fire('Deleted!', 'The task has been removed.', 'success');
                 setTimeout(() => {

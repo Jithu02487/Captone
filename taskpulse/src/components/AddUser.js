@@ -33,7 +33,7 @@ export function AddUser(){
           teamId,
         };
 
-        axios.post("http://localhost:8080/addUser", userData)
+        axios.post("http://localhost:8081/addUser", userData)
             .then(() => {
                 Swal.fire('Success!', 'Used added successfully.', 'success');
                 nav("/users")

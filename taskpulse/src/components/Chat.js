@@ -15,7 +15,7 @@ export default function Chat() {
 
   useEffect(() => {
     bottomRef.current?.scrollIntoView({ behavior: "smooth" });
-    axios.get(`http://localhost:8080/users/${userid}`)
+    axios.get(`http://localhost:8081/users/${userid}`)
             .then(response => {
                 setUsername(response.data.name)
             })
@@ -27,12 +27,12 @@ export default function Chat() {
 
   useEffect(() => {
     // Fetch chat history for the team
-    axios.get(`http://localhost:8080/api/messages/team/${teamId}`)
+    axios.get(`http://localhost:8081/api/messages/team/${teamId}`)
       .then((res) => setMessages(res.data))
       .catch((err) => console.error("Error fetching messages", err));
 
     // Setup WebSocket + STOMP
-    const stompClient = Stomp.over(() => new SockJS("http://localhost:8080/ws")); // ✅ This is the new correct way
+    const stompClient = Stomp.over(() => new SockJS("http://localhost:8081/ws")); // ✅ This is the new correct way
 
 
     stompClient.connect({}, () => {

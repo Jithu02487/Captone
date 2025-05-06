@@ -6,7 +6,7 @@ export function Teams(){
     const [teams, setTeams] = useState([]);
 
     useEffect(() => {
-        axios.get('http://localhost:8080/teams')
+        axios.get('http://localhost:8081/teams')
             .then(response => {
                 setTeams(response.data); // Store data in state
             })

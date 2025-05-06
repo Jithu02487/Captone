@@ -9,7 +9,7 @@ export function Users(){
     const nav = useNavigate()
 
     useEffect(() => {
-        axios.get('http://localhost:8080/users')
+        axios.get('http://localhost:8081/users')
             .then(response => {
                 setUsers(response.data); // Store data in state
             })
@@ -35,7 +35,7 @@ export function Users(){
           confirmButtonText: 'Yes, delete it!',
         }).then((result) => {
           if (result.isConfirmed) {
-            axios.delete(`http://localhost:8080/deletUser/${userid}`)
+            axios.delete(`http://localhost:8081/deletUser/${userid}`)
                 .then(() => {
                   Swal.fire('Deleted!', 'The task has been removed.', 'success');
                   setTimeout(() => {

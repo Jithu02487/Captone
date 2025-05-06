@@ -15,7 +15,7 @@ export function Tasksmember(){
     const navigate = useNavigate()
 
     useEffect(() => {
-        axios.get(`http://localhost:8080/tasksByUserId/${userid}`)
+        axios.get(`http://localhost:8081/tasksByUserId/${userid}`)
             .then(response => {
                 setTasks(response.data); // Store data in state
             })
@@ -50,7 +50,7 @@ export function Tasksmember(){
       }).then((result) => {
         if (result.isConfirmed) {
           const status = "TODO"
-          axios.put(`http://localhost:8080/updateTask/${taskid}/${status}`)
+          axios.put(`http://localhost:8081/updateTask/${taskid}/${status}`)
                 .then(() => {
                   Swal.fire('Updated!', 'The ststus has been updated.', 'success');
                   setTimeout(() => {
@@ -62,7 +62,7 @@ export function Tasksmember(){
                 });
         } else if (result.isDenied) {
           const status = "IN_PROGRESS"
-          axios.put(`http://localhost:8080/updateTask/${taskid}/${status}`)
+          axios.put(`http://localhost:8081/updateTask/${taskid}/${status}`)
                 .then(() => {
                   Swal.fire('Updated!', 'The ststus has been updated.', 'success');
                   setTimeout(() => {
@@ -74,7 +74,7 @@ export function Tasksmember(){
                 });
         } else if (result.dismiss === Swal.DismissReason.cancel) {
           const status = "DONE"
-          axios.put(`http://localhost:8080/updateTask/${taskid}/${status}`)
+          axios.put(`http://localhost:8081/updateTask/${taskid}/${status}`)
                 .then(() => {
                   Swal.fire('Updated!', 'The status has been updated.', 'success');
                   setTimeout(() => {

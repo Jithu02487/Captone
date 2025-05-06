@@ -15,7 +15,7 @@ export function Navadmin({ teamId, userid }){
     useEffect(()=>{
       console.log(userid);
       
-      axios.get(`http://localhost:8080/users/${userid}`)
+      axios.get(`http://localhost:8081/users/${userid}`)
       .then(response => {
         console.log(response.data);
         

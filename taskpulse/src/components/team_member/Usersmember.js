@@ -9,7 +9,7 @@ export function Usersmember(){
     const nav = useNavigate()
 
     useEffect(() => {
-        axios.get('http://localhost:8080/users')
+        axios.get('http://localhost:8081/users')
             .then(response => {
                 setUsers(response.data); // Store data in state
             })

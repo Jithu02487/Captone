@@ -8,7 +8,7 @@ export function Meetings(){
     const [meetings, setMeetings] = useState([]);
 
     useEffect(() => {
-        axios.get('http://localhost:8080/meetings')
+        axios.get('http://localhost:8081/meetings')
             .then(response => {
                 setMeetings(response.data); // Store data in state
             })

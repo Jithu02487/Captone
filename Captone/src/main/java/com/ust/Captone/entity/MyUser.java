@@ -26,6 +26,7 @@ public class MyUser {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
 	private String name;
+	private String password;
 	private String email;
 	private Roles role;
 	private boolean enabled;
@@ -68,11 +69,18 @@ public class MyUser {
 	}
 	
 	
-	public MyUser(Long id, String name, String email, Roles role, boolean enabled, Team team, Set<Task> tasks,
-			List<MeetingMessages> messages, List<RoomMessages> msgs) {
+	@Override
+	public String toString() {
+		return "MyUser [id=" + id + ", name=" + name + ", email=" + email + ", role=" + role + ", team=" + team
+				+ ", Tasks="+ tasks+"]";
+		
+	}
+	public MyUser(Long id, String name, String password, String email, Roles role, boolean enabled, Team team,
+			Set<Task> tasks, List<MeetingMessages> messages, List<RoomMessages> msgs) {
 		super();
 		this.id = id;
 		this.name = name;
+		this.password = password;
 		this.email = email;
 		this.role = role;
 		this.enabled = enabled;
@@ -81,10 +89,12 @@ public class MyUser {
 		this.messages = messages;
 		this.msgs = msgs;
 	}
-	@Override
-	public String toString() {
-		return "MyUser [id=" + id + ", name=" + name + ", email=" + email + ", role=" + role + ", team=" + team
-				+ ", Tasks="+ tasks+"]";
+	
+	public String getPassword() {
+		return password;
+	}
+	public void setPassword(String password) {
+		this.password = password;
 	}
 	public Team getTeam() {
 		return team;

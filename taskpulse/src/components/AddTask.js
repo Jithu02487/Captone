@@ -15,7 +15,7 @@ export function AddTask(){
 
     useEffect(()=>{
 
-        axios.get('http://localhost:8080/users')
+        axios.get('http://localhost:8081/users')
         .then(response => {
             setUsers(response.data); // Store data in state
         })
@@ -35,7 +35,7 @@ export function AddTask(){
           userId,
         };
 
-        axios.post("http://localhost:8080/addTask", taskData)
+        axios.post("http://localhost:8081/addTask", taskData)
             .then((res) => {
                 Swal.fire('Success!', 'Task added successfully.', 'success');
                 nav("/tasks")

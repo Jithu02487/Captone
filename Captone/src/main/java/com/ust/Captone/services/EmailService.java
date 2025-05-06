@@ -1,43 +1,36 @@
 package com.ust.Captone.services;
 
-import java.io.IOException;
-
-import org.springframework.beans.factory.annotation.Value;
+import org.springframework.mail.javamail.JavaMailSender;
+import org.springframework.mail.javamail.MimeMessageHelper;
 import org.springframework.stereotype.Service;
 
-import com.sendgrid.Method;
-import com.sendgrid.Request;
-import com.sendgrid.Response;
-import com.sendgrid.SendGrid;
-import com.sendgrid.helpers.mail.Mail;
-import com.sendgrid.helpers.mail.objects.Content;
-import com.sendgrid.helpers.mail.objects.Email;
+import jakarta.mail.MessagingException;
+import jakarta.mail.internet.MimeMessage;
 
 @Service
 public class EmailService {
 
-    @Value("${sendgrid.api.key}")
-    private String sendGridApiKey;
+    private final JavaMailSender javaMailSender;
 
-    @Value("${sendgrid.from.email}")
-    private String fromEmail;
+    // Injecting JavaMailSender through constructor
+    public EmailService(JavaMailSender javaMailSender) {
+        this.javaMailSender = javaMailSender;
+    }
 
-    public void sendEmail(String to, String subject, String body) throws IOException {
-        Email from = new Email(fromEmail);
-        Email toEmail = new Email(to);
-        Content content = new Content("text/plain", body);
-        Mail mail = new Mail(from, subject, toEmail, content);
+    // Method to send an email
+    public void sendEmail(String to, String token,String content,String url) throws MessagingException {
+        String subject = "Verify Your Email";
+        String verificationUrl = url + token;
+        String body = content
+                    + "<a href=\"" + verificationUrl + "\">Verify Now</a>";
 
-        SendGrid sg = new SendGrid(sendGridApiKey);
-        Request request = new Request();
+        MimeMessage message = javaMailSender.createMimeMessage();
+        MimeMessageHelper helper = new MimeMessageHelper(message, true);
+        helper.setFrom("jithuvudayan02487@gmail.com");
+        helper.setTo(to);
+        helper.setSubject(subject);
+        helper.setText(body, true); // HTML content
 
-        request.setMethod(Method.POST);
-        request.setEndpoint("mail/send");
-        request.setBody(mail.build());
-
-        Response response = sg.api(request);
-        System.out.println("Status Code: " + response.getStatusCode());
-        System.out.println("Response Body: " + response.getBody());
-        System.out.println("Response Headers: " + response.getHeaders());
+        javaMailSender.send(message);
     }
 }

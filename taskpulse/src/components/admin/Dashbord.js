@@ -6,7 +6,7 @@ export function Dashbord(){
     const [taskCount, setTaskCount] = useState(0);
 
     useEffect(() => {
-        axios.get('http://localhost:8080/users')
+        axios.get('http://localhost:8081/users')
             .then(response => {
             setUserCount(response.data.length); // Get the count of users
             })
@@ -14,7 +14,7 @@ export function Dashbord(){
             console.error('Error fetching users:', error);
             });
 
-            axios.get('http://localhost:8080/tasks')
+            axios.get('http://localhost:8081/tasks')
             .then(response => {
             setTaskCount(response.data.length); // Get the count of users
             })
