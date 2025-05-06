@@ -8,7 +8,8 @@ export function AddUser(){
 
     const [name, setName] = useState("");
   const [email, setEmail] = useState("");
-  const [role, setRole] = useState(""); // Should be a valid enum string
+  // const [pass, setPass] = useState("");
+  // const [role, setRole] = useState(""); // Should be a valid enum string
   const { teamId, userid } = useContext(MemberContext);
     const nav = useNavigate()
 
@@ -23,24 +24,43 @@ export function AddUser(){
     //     });
     // })
 
+// Generate Password======================================
+    function generatePassword(length = 12) {
+      const charset = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789!@#$%&*";
+      let password = "";
+      for (let i = 0; i < length; i++) {
+        const randomIndex = Math.floor(Math.random() * charset.length);
+        password += charset[randomIndex];
+      }
+      return password;
+    }
+    
+
     const handleSubmit = (e) => {
         e.preventDefault();
+       const generatedPassword= generatePassword()
+        
     
         const userData = {
           name,
           email,
-          role,
+          password:generatedPassword,
+          role:"TEAM_MEMBER",
           teamId,
+          enabled:false
         };
+        console.log(JSON.stringify(userData))
 
-        axios.post("http://localhost:8081/addUser", userData)
+        
+
+        axios.post("http://localhost:8081/addUserByHead", userData)
             .then(() => {
-                Swal.fire('Success!', 'Used added successfully.', 'success');
+                Swal.fire('Success!', 'Used added successfully and mail sent.', 'success');
                 nav("/users")
             })
             .catch((err) => {
                 console.error("Error:", err);
-                alert("Failed to add task.");
+                alert("Failed to add Member.");
             });
   };
     return <>
@@ -72,10 +92,7 @@ export function AddUser(){
              
               <div class="mb-3">
               <label>Role</label>
-                <select className="form-select" value={role}
-                    onChange={(e) => setRole(e.target.value)} required>
-                    <option value="">Select Role</option>
-                    <option value="TEAM_HEAD">TEAM_HEAD</option>
+                <select className="form-select"  required>
                     <option value="TEAM_MEMBER">TEAM_MEMBER</option>
                     
                 </select>

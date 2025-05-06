@@ -48,6 +48,11 @@ public class UserController {
 	
 		@PostMapping("/addUser")
 		public String addUser(@RequestBody MyUserDto user) {
+			return us.signup(user);
+		}
+		
+		@PostMapping("/addUserByHead")
+		public String addUserByHead(@RequestBody MyUserDto user) {
 			return us.addUser(user);
 		}
 		
@@ -55,6 +60,11 @@ public class UserController {
 		@GetMapping("/users")
 		public List<MyUser> displayUsers(){
 			return us.findAllUsers();
+		}
+		
+		@DeleteMapping("/users/{teamid}")
+		public String UsersByTeam(@PathVariable Long teamid) {
+			return us.deleteUser(teamid);
 		}
 		
 		@GetMapping("/users/{id}")

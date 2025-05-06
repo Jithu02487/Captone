@@ -64,7 +64,6 @@ export function Users(){
                 <th scope="col">Name</th>
                 <th scope="col">Email</th>
                 <th scope="col">Role</th>
-                <th scope="col"></th>
             </tr>
         </thead>
         <tbody>

@@ -39,8 +39,8 @@ public class MyUserService {
 
 	
 	
-//	Adding a new user
-	public String addUser(MyUserDto user) {
+//	Signuping a new user
+	public String signup(MyUserDto user) {
 	    Optional<Team> oteam = tr.findById(user.getTeamId());
 	    if (!oteam.isPresent()) {
 	        return "Invalid Request: Team is not present";
@@ -76,6 +76,53 @@ public class MyUserService {
 	    return "User created successfully. Verification email sent.";
 	}
 
+	
+//	Adding New User
+	public String addUser(MyUserDto user) {
+	    Optional<Team> oteam = tr.findById(user.getTeamId());
+	    if (!oteam.isPresent()) {
+	        return "Invalid Request: Team is not present";
+	    }
+
+	    // Create and save user
+	    MyUser savedUser = new MyUser();
+	    savedUser.setEmail(user.getEmail());
+	    savedUser.setPassword(user.getPassword());
+	    savedUser.setName(user.getName());
+	    savedUser.setRole(user.getRole());
+	    savedUser.setTeam(oteam.get());
+	    savedUser.setEnabled(false); // Ensure user starts as unverified
+	    ur.save(savedUser);
+
+	    // Generate token and save
+	    String token = UUID.randomUUID().toString();
+	    System.out.println("Tocken is "+ token);
+	    Token verificationToken = new Token(token, savedUser,tokenType.VERIFICATION);
+	    verificationTokenRepository.save(verificationToken);
+	    System.out.println("Saved token ID: " + verificationToken.getId());
+	    
+	    String password = user.getPassword();  // your generated password
+
+	    String body = "<p>Hi,</p>"
+	                + "<p>You have been added to a team on <strong>TaskPulse</strong>. Here is your first (temporary) password:</p>"
+	                + "<p><strong>" + password + "</strong></p>"
+	                + "<p><strong>Important:</strong> Please do not share this email or your password with anyone.</p>"
+	                + "<p>To activate your account, please verify your email by clicking the link below:</p>"
+	                + "<p>After verifying your email, we strongly recommend that you reset your password to keep your account secure.</p>"
+	                + "<p>Welcome to the team!</p>"
+	                + "<p>— The TaskPulse Team</p>";
+
+	    String url = "http://localhost:3000/verify?token=";
+
+	    // Send verification email
+	    try {
+	        emailService.sendEmail(user.getEmail(), token,body,url);
+	    } catch (MessagingException e) {
+	        return "User created, but failed to send verification email: " + e.getMessage();
+	    }
+
+	    return "User created successfully. Verification email sent.";
+	}
 	
 	public List<MyUser> findAllUsers(){
 		return ur.findAll();

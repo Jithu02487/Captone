@@ -49,10 +49,10 @@ export function Sidebar(){
                         
                     </li>
                     
-                    <li>
+                    {/* <li>
                         <a href="#" class="nav-link px-0 align-middle">
                             <i class="fs-4 bi-people"></i> <span class="ms-1 d-none d-sm-inline">Customers</span> </a>
-                    </li>
+                    </li> */}
                 </ul>
                 <hr/>
             </div>

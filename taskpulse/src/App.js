@@ -37,7 +37,7 @@ function App() {
       <Route path='/reset' element={<Reset/>}/>
 
       {/* ADMIN */}
-          <Route path="/" element={<Navadmin teamId="1" userid="289"/>}>
+          <Route path="/" element={<Navadmin teamId="1" userid="1"/>}>
             <Route path="users" element={<Users />} />
             <Route path="teams" element={<Teams />} />
             <Route path="tasks" element={<Tasks />} />
@@ -52,7 +52,7 @@ function App() {
 
           {/* MEMBER */}
           </Route>
-          <Route path="/member" element={<Navmember teamId="1" userid="4"/>}>
+          <Route path="/member" element={<Navmember teamId="1" userid="68"/>}>
             <Route path="tasks" element={<Tasksmember />}/>
             <Route path="users" element={<Usersmember />}/>
             <Route path="chats" element={<Chatmember />}/>
